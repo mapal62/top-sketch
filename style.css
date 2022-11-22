@@ -1,21 +1,31 @@
-body div {
-    width: 80%;
-    height: 80vh;
-    margin: 0 auto;
+body>div {
+    width: 90%;
+    margin: 10% auto;
 }
 
 .setup,
 .board {
-    width: 80%;
-    height: 40%;
+    width: 90%;
+    aspect-ratio: 1 / 1;
+    margin: 10% auto;
 }
 .board {
-    background-color: aqua;
+    background-color: rgb(143, 233, 233);
+    display: grid;
+    grid-template-columns: repeat(64, 1fr);
+    /* grid-template-rows: repeat(64, 1fr); */
+}
+
+.pixel:hover {
+background-color: red;
 }
 
 
+.setbg {
+    background-color: black;
+}
 @media (orientation: landscape) {
-    body div {
+    body>div {
         display: flex;
         flex-direction: row-reverse;
         justify-content: space-between;
@@ -23,8 +33,7 @@ body div {
     }
     .setup,
     .board {
-        width: 40%;
-        height: 60%;
+        width: 45%;
     }
 .board {
 
