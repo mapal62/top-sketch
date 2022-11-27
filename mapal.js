@@ -18,8 +18,10 @@ restart.onclick = () => {
             e.target.style.backgroundColor = 'black';
         })
         startNode.addEventListener('touchmove', (e) => {
-            e.preventDefault();
             e.target.style.backgroundColor = 'grey';
+            //targeting the event start ALWAYS!!!
+            const touchPoint = document.elementFromPoint(e.touches[0].pageX, e.touches[0].pageY);
+            touchPoint.style.backgroundColor = 'blue';
         })
         document.getElementById('base').appendChild(startNode);
     }
