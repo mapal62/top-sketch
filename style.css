@@ -1,6 +1,7 @@
 h2 {
     text-align: center;
     font-size: 2rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 #base {
     width: 90%;
@@ -13,21 +14,17 @@ h2 {
     margin: 3% auto;
 }
 #board {
-    aspect-ratio: 1 / 1;
     background-color: rgb(143, 233, 233);
     display: grid;
+    aspect-ratio: 1 / 1;
 }
 button {
-display: block;
-margin: 0 auto;
-font-size: 2rem;
+    display: block;
+    margin: 0 auto;
+    font-size: 2rem;
 }
 .pixel {
-    border: 1px solid gray;
-}
-.pixel:hover {
-    background-color: red;
-    content: "";
+    border: 0.2px dotted rgb(194, 194, 194);
 }
 @media (orientation: landscape) {
     #base {
@@ -36,7 +33,8 @@ font-size: 2rem;
     }
     #setup,
     #board {
-        width: 45%;
+        max-height: 70vh;
+        max-width: 45%;
     }
     #board {
         order: 2;
