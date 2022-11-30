@@ -1,8 +1,12 @@
-h2 {
-    text-align: center;
-    font-size: 2rem;
+body {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
+h2 {
+    font-size: 2rem;
+    text-align: center;
+}
+
 #base {
     width: 90%;
     margin: 0 auto;
@@ -13,29 +17,44 @@ h2 {
     width: 90%;
     margin: 3% auto;
 }
+
 #board {
     background-color: rgb(143, 233, 233);
     display: grid;
     aspect-ratio: 1 / 1;
 }
+
 button {
     display: block;
     margin: 0 auto;
     font-size: 2rem;
 }
+
+#coloring {
+    margin: 10% auto;
+    width: 50%;
+}
+
+label {
+    display: block;
+}
+
 .pixel {
     border: 0.2px dotted rgb(194, 194, 194);
 }
+
 @media (orientation: landscape) {
     #base {
         display: flex;
         justify-content: space-between;
     }
+
     #setup,
     #board {
         max-height: 70vh;
         max-width: 45%;
     }
+
     #board {
         order: 2;
     }

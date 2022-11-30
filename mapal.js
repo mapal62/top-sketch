@@ -1,7 +1,6 @@
 console.log('running');
 let gridSize;
 
-
 const restart = document.querySelector('button');
 restart.onclick = () => {
     gridSize = enterInteger();
@@ -25,6 +24,7 @@ function enterInteger() {
     } while (userInput === NaN);
     return userInput;
 }
+
 function buildBoard(size) {
     document.getElementById('board').remove();
     //
@@ -34,6 +34,7 @@ function buildBoard(size) {
     startNode.style.gridTemplateRows = `repeat(${size}, 1fr)`;
     return startNode;
 }
+
 function appendSquares(node, squareSide) {
     const pixels = [];
     for (i = 0; i < squareSide; i++) {
@@ -45,9 +46,11 @@ function appendSquares(node, squareSide) {
     }
     node.append(...pixels);
 }
+
 function addEvents(element) {
     element.addEventListener('mousemove', (e) => {
-        e.target.style.backgroundColor = 'black';
+        setColoring(e.target)
+        // e.target.style.backgroundColor = 'black';
     })
     element.addEventListener('touchmove', (e) => {
         e.target.style.backgroundColor = 'blue';
@@ -56,4 +59,35 @@ function addEvents(element) {
         touchPoint.style.backgroundColor = 'blue';
     })
 
+}
+
+function setColoring(targetPixel) {
+    const pixelBg = {
+        mono(target) {
+            target.style.backgroundColor = 'black';
+        },
+        random(target) {
+            const hslRandom = Math.floor(Math.random() * 359 + 1);
+            target.style.backgroundColor = `hsl(${hslRandom}, 80%, 50%)`;
+        },
+        gradient(target) {
+            const currentColor = target.style.backgroundColor;
+            if (!currentColor) {
+                target.style.backgroundColor = 'rgba(0, 0, 0, 0.05)';
+            } else {
+                target.style.backgroundColor = nextShade(currentColor);
+            }
+        }
+    }
+    const choosen =
+        document.querySelector('input[name="color"]:checked').value;
+    pixelBg[choosen](targetPixel);
+}
+
+function nextShade(shade) {
+    const rgbaValue = shade.split(' ');
+    if (rgbaValue.length < 4) return shade; //nothing to do, MAX reached
+    rgbaValue[3] = parseFloat(rgbaValue[3]) + 0.05;
+    rgbaValue.push(')')
+    return rgbaValue.join('');
 }
