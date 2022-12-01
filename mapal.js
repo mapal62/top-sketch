@@ -52,6 +52,7 @@ function addEvents(element) {
             setColoring(e.target)
     })
     element.addEventListener('touchmove', (e) => {
+        e.preventDefault();
         setColoring(e.target)
         //an event ALWAYS targeting the touch start!!!
         const touchPoint = document.elementFromPoint(e.touches[0].pageX, e.touches[0].pageY);
