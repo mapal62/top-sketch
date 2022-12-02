@@ -49,11 +49,14 @@ function appendSquares(node, squareSide) {
 
 function addEvents(element) {
     element.addEventListener('mousemove', (e) => {
-            setColoring(e.target)
+        setColoring(e.target)
     })
     element.addEventListener('touchmove', (e) => {
+        console.log(e.target.style);
         e.preventDefault();
-        setColoring(e.target)
+        if (e.target.style.backgroundColor === '') {
+            setColoring(e.target)
+        }
         //an event ALWAYS targeting the touch start!!!
         const touchPoint = document.elementFromPoint(e.touches[0].pageX, e.touches[0].pageY);
         setColoring(touchPoint);
